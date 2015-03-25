@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Simple Grid System
+   @author: Vagner Santana
+   @repository: https://github.com/vagnervjs/simple-grid
+   ========================================================================== */
+/*
+    Grid Variables
+    ========================================================================== */
+/*
+   Grid Setup
+   ========================================================================== */
+.container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+}
+.row {
+  margin-bottom: 20px;
+}
+.container .alpha {
+  margin-left: 0;
+}
+.container .omega {
+  margin-right: 0;
+}
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after,
+.container:before,
+.container:after {
+  content: '.';
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+}
+.row:after,
+.clearfix:after,
+.container:after {
+  clear: both;
+}
+.row {
+  zoom: 1;
+}
+/*
+   Grid Framework
+   Based on bootstrap grid-framework.less.less mixin
+   https://github.com/twbs/bootstrap/blob/master/less/mixins/grid-framework.less
+   ========================================================================== */
+/*
+   Make Grid
+   ========================================================================== */
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  position: relative;
+  display: inline;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  min-height: 1px;
+}
+.col-12 {
+  width: 1130px;
+}
+.col-11 {
+  width: 1035px;
+}
+.col-10 {
+  width: 940px;
+}
+.col-9 {
+  width: 845px;
+}
+.col-8 {
+  width: 750px;
+}
+.col-7 {
+  width: 655px;
+}
+.col-6 {
+  width: 560px;
+}
+.col-5 {
+  width: 465px;
+}
+.col-4 {
+  width: 370px;
+}
+.col-3 {
+  width: 275px;
+}
+.col-2 {
+  width: 180px;
+}
+.col-1 {
+  width: 85px;
+}
+.container {
+  width: 1140px;
+}
+@media only screen and (max-width: 1160px) {
+  .col-12 {
+    width: 950px;
+  }
+  .col-11 {
+    width: 870px;
+  }
+  .col-10 {
+    width: 790px;
+  }
+  .col-9 {
+    width: 710px;
+  }
+  .col-8 {
+    width: 630px;
+  }
+  .col-7 {
+    width: 550px;
+  }
+  .col-6 {
+    width: 470px;
+  }
+  .col-5 {
+    width: 390px;
+  }
+  .col-4 {
+    width: 310px;
+  }
+  .col-3 {
+    width: 230px;
+  }
+  .col-2 {
+    width: 150px;
+  }
+  .col-1 {
+    width: 70px;
+  }
+  .container {
+    width: 960px;
+  }
+}

@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Simple Grid System
+   @author: Vagner Santana
+   @repository: https://github.com/vagnervjs/simple-grid
+   ========================================================================== */
+
+/*
+    Grid Variables
+    ========================================================================== */
+@gridColumns:           12;
+@gridGutterWidth:       10px;
+
+@gridWidth_1140:        1140px;
+@gridWidth_960:         960px;
+
+
+/*
+   Grid Setup
+   ========================================================================== */
+.container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.container .alpha {margin-left:0;}
+.container .omega {margin-right:0;}
+
+.clearfix:before, .clearfix:after,
+.row:before, .row:after,
+.container:before, .container:after {
+    content: '.';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
+
+.row:after,
+.clearfix:after,
+.container:after {
+    clear:both;
+}
+.row {zoom: 1;}
+
+
+/*
+   Grid Framework
+   Based on bootstrap grid-framework.less.less mixin
+   https://github.com/twbs/bootstrap/blob/master/less/mixins/grid-framework.less
+   ========================================================================== */
+.makeGridColumns() {
+    // Common styles for all sizes of grid columns, widths 1-12
+    .col(@index) { // initial
+        @item: ~".col-@{index}";
+        .col((@index + 1), @item);
+    }
+    .col(@index, @list) when (@index =< @gridColumns) { // general; "=<" isn't a typo
+        @item: ~".col-@{index}";
+        .col((@index + 1), ~"@{list}, @{item}");
+    }
+    .col(@index, @list) when (@index > @gridColumns) { // terminal
+        @{list} {
+            position: relative;
+            display: inline;
+            float: left;
+            margin-left: (@gridGutterWidth / 2);
+            margin-right: (@gridGutterWidth / 2);
+
+            // Prevent columns from collapsing when empty
+            min-height: 1px;
+        }
+    }
+    .col(1); // kickstart it
+}
+
+.calcGridColumn(@index, @gridWidth) when (@index > 0) {
+  .col-@{index} {
+    width: @gridWidth / (@gridColumns/@index) - @gridGutterWidth;
+  }
+}
+
+// Basic looping in LESS
+.loopGridColumns(@index, @gridWidth) when (@index >= 0) {
+  .calcGridColumn(@index, @gridWidth);
+  // next iteration
+  .loopGridColumns((@index - 1), @gridWidth);
+}
+
+// Create grid for specific container width
+.makeGrid(@gridWidth, @makeColums) {
+    & when (@makeColums = true) {
+        .makeGridColumns();
+    }
+
+    .loopGridColumns(@gridColumns , @gridWidth);
+
+    .container {
+        width: @gridWidth;
+    }
+}
+
+/*
+   Make Grid
+   ========================================================================== */
+.makeGrid(@gridWidth_1140, true);
+
+@media only screen and (max-width: 1160px) {
+    .makeGrid(@gridWidth_960, false);
+}

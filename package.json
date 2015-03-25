@@ -1,0 +1,29 @@
+{
+  "name": "simple-grid",
+  "version": "1.0.0",
+  "description": "A simple less grid",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vagnervjs/simple-grid.git"
+  },
+  "keywords": [
+    "less",
+    "grid",
+    "css"
+  ],
+  "author": "Vagner Santana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vagnervjs/simple-grid/issues"
+  },
+  "homepage": "https://github.com/vagnervjs/simple-grid",
+  "devDependencies": {
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.2"
+  }
+}
